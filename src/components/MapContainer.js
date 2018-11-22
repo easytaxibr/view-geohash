@@ -5,7 +5,7 @@ import { geohashToPolygon } from '../Helper';
 export class MapContainer extends Component {
 
     render() {
-
+        
         const style = {
             width: '100%',
             height: '100%'
@@ -17,7 +17,7 @@ export class MapContainer extends Component {
             lng: -77.042793
         }
         if (geohashes.length > 0) {
-            initialCenter = {
+         initialCenter = {
                 lat: geohashToPolygon(geohashes[0])[0].lat,
                 lng: geohashToPolygon(geohashes[0])[0].lng
             }
@@ -25,9 +25,10 @@ export class MapContainer extends Component {
         return (
             <Map
                 google={this.props.google}
-                zoom={12}
+                zoom={10}
                 style={style}
                 initialCenter={initialCenter}
+                center={initialCenter}
             >
                 {
                     geohashes.map(geohash => (

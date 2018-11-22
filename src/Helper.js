@@ -4,7 +4,7 @@ export const geohashToPolygon = (geohash) => {
     /* (Geohash-specific) Base32 map */
     Geohash.base32 = '0123456789bcdefghjkmnpqrstuvwxyz';
         function bounds(geohash) {
-            if (geohash.length === 0) throw new Error('Invalid geohash');
+            if (geohash.length === 0) return false;
         
             geohash = geohash.toLowerCase();
         
@@ -15,7 +15,7 @@ export const geohashToPolygon = (geohash) => {
             for (var i=0; i < geohash.length; i++) {
                 var chr = geohash.charAt(i);
                 var idx = Geohash.base32.indexOf(chr);
-                if (idx == -1) throw new Error('Invalid geohash');
+                if (idx == -1) return false;
         
                 for (var n=4; n>=0; n--) {
                     var bitN = idx >> n & 1;
